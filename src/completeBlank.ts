@@ -30,7 +30,10 @@ const completeBlank =
             },
             range: range,
             raw: text.slice(...range),
-            type: ASTNodeTypes.Html,
+            type:
+              text.slice(...range) == "\n"
+                ? ASTNodeTypes.Break
+                : ASTNodeTypes.Html,
             value: text.slice(...range),
           });
         } else {
